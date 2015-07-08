@@ -14,7 +14,7 @@ module.exports = {
     author : { type: 'string' },
 
     id : { type: 'integer',
-           autoincrement: true
+           autoIncrement: true
          }
   }
 };

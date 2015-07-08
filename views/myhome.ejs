@@ -1,0 +1,36 @@
+<h1>hello, <%=name %></h1>
+<p>
+<h1>Insert Book</h1>
+<form action="/books/insert" method=POST>
+	Book Name:<input type="text" placeholder="Enter book name" name="book"><br>
+	Author Name:<input type="text" placeholder="Enter author name" name="author"><br>
+	<input type="submit" value="Insert">
+</form>
+
+</p>
+<p>
+<%= JSON.stringify(inserted.length) %>
+</p>
+<p>
+	<table border=1>
+		<tr>
+			<td>Name</td>
+			<td>Author</td>
+      <td>Action</td>
+        </tr>
+        <% for(var i=0;i<inserted.length;i++){%>
+        <tr>
+        	<td>
+               <a href="/books/view?id=<%= JSON.stringify(inserted[i].id) %>"><%= JSON.stringify(inserted[i].name) %></a>
+            </td>
+            <td>
+               <%= JSON.stringify(inserted[i].author) %>
+            </td>
+            <td>
+               <a href="/books/del?id=<%= JSON.stringify(inserted[i].id) %>">Delete</a>
+            </td>
+        </tr>
+
+       <% } %>
+	</table>
+</p>

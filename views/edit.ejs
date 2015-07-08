@@ -1,0 +1,10 @@
+<h1><%=name %></h1>
+<form action="/books/editdetls" method=POST>
+ID:<%=sbook.id %><br>
+Name:<input type="text" name="bname" placeholder="<%=sbook.name %>"><br>
+Author:<input type="text" name="aname" placeholder="<%=sbook.author %>"><br>
+Created At:<%=sbook.createdAt %><br>
+Last Updated:<%=sbook.updatedAt %><br>
+<input type="hidden" value="<%=sbook.id %>" name="id">
+<input type="submit" value="change">
+</form>

@@ -33,8 +33,22 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
-  }
+    view: 'myhome'
+  },
+  //for books controller
+  'get /books/find':'BooksController.find',
+  'post /books/insert':'BooksController.insert',
+  'get /books/viewAll':'BooksController.viewAll',
+  'get /books/view':'BooksController.view',
+  'get /books/update':'BooksController.update',
+  'post /books/editdetls':'BooksController.editdetls',
+  'get /books/del':'BooksController.del',
+  
+  //for section controller
+  '/section/insert':'SectionController.insert',
+  '/section/newinsert':'SectionController.newinsert',
+  'get /section/viewAll':'SectionController.viewAll',
+
 
   /***************************************************************************
   *                                                                          *
