@@ -28,7 +28,9 @@ module.exports = {
 	insert:function(request,response){//method to insert new book details
       var bname=request.body.book;
       var aname=request.body.author;
-      Books.create({name:bname,author:aname}).exec(function(error,book){
+      var sec=request.body.bSection;
+      sails.log(sec);
+      Books.create({name:bname,author:aname,type:sec}).exec(function(error,book){
 				if(error){
                    return response.serverError();
 				}
@@ -126,12 +128,36 @@ module.exports = {
         }
                else{
                 sails.log(book);
-        response.view("myhome",{name: "Deleted", inserted: undefined });
+                Books.find(function(error,books){
+               if(error)
+               {
+                 return response.serverError();
+               }
+               else{
+                 sails.log(books);
+                 response.view("myhome",{name: "Showing All Results", inserted: books });
+               }
+
+              });
       }
       });
 
   },
-	
-};
 
-  
+   insertBook:function(request,response){//method to see all sections
+      Section.find(function(error,sections){
+       if(error)
+       {
+         return response.serverError();
+       }
+       else{
+         //sails.log(books);
+         response.view("newbook",{name: "Insert New Book", sections: sections });
+       }
+
+      });
+        
+  },
+
+
+  };

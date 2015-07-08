@@ -43,6 +43,7 @@ module.exports.routes = {
   'get /books/update':'BooksController.update',
   'post /books/editdetls':'BooksController.editdetls',
   'get /books/del':'BooksController.del',
+  '/books/insertBook':'BooksController.insertBook',
   
   //for section controller
   '/section/insert':'SectionController.insert',

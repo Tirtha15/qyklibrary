@@ -1,22 +1,26 @@
 <h1>hello, <%=name %></h1>
-<p>
+<!--<p>
 <h1>Insert Book</h1>
 <form action="/books/insert" method=POST>
 	Book Name:<input type="text" placeholder="Enter book name" name="book"><br>
 	Author Name:<input type="text" placeholder="Enter author name" name="author"><br>
+
 	<input type="submit" value="Insert">
 </form>
 
 </p>
 <p>
-<%= JSON.stringify(inserted.length) %>
-</p>
+
+</p>-->
 <p>
 	<table border=1>
 		<tr>
-			<td>Name</td>
-			<td>Author</td>
-      <td>Action</td>
+      
+			<td><h1>Name</h1></td>
+			<td><h1>Author</h1></td>
+      <td><h1>Section</h1></td>
+      <td><h1>Action</h1></td>
+
         </tr>
         <% for(var i=0;i<inserted.length;i++){%>
         <tr>
@@ -25,6 +29,9 @@
             </td>
             <td>
                <%= JSON.stringify(inserted[i].author) %>
+            </td>
+            <td>
+               <%= JSON.stringify(inserted[i].type) %>
             </td>
             <td>
                <a href="/books/del?id=<%= JSON.stringify(inserted[i].id) %>">Delete</a>

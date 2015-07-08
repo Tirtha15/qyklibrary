@@ -1,0 +1,12 @@
+<h1><%=name %></h1>
+<form action="/books/insert" method=POST>
+	Book Name:<input type="text" placeholder="Enter book name" name="book"><br>
+	Author Name:<input type="text" placeholder="Enter author name" name="author"><br>
+  Section:
+   <select name="bSection">
+   	<%for(var i=0;i<sections.length;i++) {%>
+  <option value="<%= JSON.stringify(sections[i].name) %>"><%= JSON.stringify(sections[i].name) %></option>
+ <%}%>
+</select> <br>
+	<input type="submit" value="Insert">
+</form>

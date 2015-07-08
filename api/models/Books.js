@@ -15,7 +15,12 @@ module.exports = {
 
     id : { type: 'integer',
            autoIncrement: true
-         }
+         },
+
+    type:{
+            model: 'Section',
+            type: 'string'
+        }
   }
 };
 
