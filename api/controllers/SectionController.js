@@ -6,28 +6,27 @@
  */
 
 module.exports = {
- 
- 	insert:function(request,response){//method to get the details of each section
 
-      response.view("secInsert");
-	},
+// in use
+  create:function(request,response){//method to get the details of each section
 
-	newinsert:function(request,response){//method to get the details of each section
-
-       var secname=request.body.secname;
+       var secname=request.body.secName;
+     //  var secName=request.body.secname;
+      // sails.log(secname);
+      // sails.log(secName);
        Section.create({name:secname}).exec(function(error,sec){
-				if(error){
+        if(error){
                    return response.serverError();
-				}
+        }
                else{
-               	//sails.log(book);
-				response.ok("Added successfully");
+                //sails.log(book);
+        response.redirect('/admin/login');
 
-			}
-			});
-	},
-
-	 viewAll:function(request,response){//method to see all sections
+      }
+      });
+  },
+// in use
+   find:function(request,response){//method to see all sections
       Section.find(function(error,sections){
        if(error)
        {
@@ -35,12 +34,37 @@ module.exports = {
        }
        else{
          //sails.log(books);
-         response.view("secView",{name: "Showing All Results", inserted: sections });
+         response.view("sections/viewAll",{name: "Showing All Results", inserted: sections });
        }
 
       });
         
+  },
+
+  
+ /*
+ 	insert1:function(request,response){//method to get the details of each section
+      response.ok("Inserted");
+      //response.redirect('/admin/login');
 	},
+
+  insert:function(request,response){//method to get the details of each section
+    var secname=request.body.secName;
+    //sails.log(secname);
+           Section.create({name:secname}).exec(function(error,sec){
+            if(error){
+                       return response.serverError();
+            }
+                   else{
+                    
+            response.redirect('/admin/login');
+
+          }
+          });
+  },*/
+
+
+
 
 
 };

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script>
+$(document).ready(function(){
+    $("#sbmt").click(function(){
+      var bookid = $(this).attr("bookid");
+      var bookname=$("#bname").val();
+      var authorname=$("#aname").val();
+      var section=$("#section").val();
+      //alert(section);
+             $.ajax({
+            method: "PUT",
+            url: "/books/"+bookid,
+            data: {bookName: bookname , authorName: authorname, section: section},
+            })
+            .done(function( msg ) {
+            alert( "Updated ");
+            location.reload();
+            }).fail(function(msg) {
+              console.log("Failed", msg);
+            });
+
+
+    });
+});
+</script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Qyk Library</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/books/find">Books</a></li>
+        <li><a href="/section/find">Sections</a></li>
+        <li class="active"><a href="/admin/login">Admin Panel</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+<div>
+  <h1>Edit Details</h1>
+  <h4>Book:<input id="bname" type="text" name="bookName" value="<%=sbook.name %>"><br>
+  Author:<input id="aname" type="text" name="bookName" value="<%=sbook.author %>"><br>
+  Section:
+<select name="bSection" id="section">
+    <% function dropDown(secList,bookSec){ 
+      sails.log(secList);
+      sails.log(bookSec);
+        if(secList==bookSec)
+           return '<option value="'+secList+'" selected>'+secList+'</option>';
+        else
+           return '<option value="'+secList+'">'+secList+'</option>';
+    } for(var i=0;i<sections.length;i++){%>
+
+
+    <%-dropDown(sections[i].name,sbook.type)%>
+         
+    <%}  %>
+
+
+</select> 
+<br><br>
+<input type="button" id="sbmt" bookid="<%=sbook.id %>" value="Edit" >
+</h4>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script>
+$(document).ready(function(){
+    $(".deleteBtn").click(function(){
+      var bookid = $(this).attr("bookid");
+     // alert(bookid);
+             $.ajax({
+            method: "DELETE",
+            url: "/books/del/"+bookid,
+            
+            })
+            .done(function( msg ) {
+            alert( "Deleted " + msg[0].name);
+            location.reload();
+            }).fail(function(msg) {
+              console.log("Failed", msg);
+            });
+
+
+    });
+});
+</script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Qyk Library</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/books/find">Books</a></li>
+        <li><a href="/section/find">Sections</a></li>
+        <li class="active"><a href="#">Admin Panel</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h2>Welcome Admin!</h2>
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Add New Section</h3>
+      <form action="/section/newinsert" method=POST>
+Section Name:<input type="text" name="secName" placeholder="Type a new section name"><br>
+<!--<div class="form-group">
+    <label for="sname">Section Name:</label>
+   
+  </div>-->
+<br>
+<button type="submit" class="btn btn-default">Submit</button>
+</form><br>
+<h3>Add New Books</h3>
+<form action="/books/insert" method=POST>
+  Book Name: <input type="text" placeholder="Enter book name" name="book"><br>
+  Author Name: <input type="text" placeholder="Enter author name" name="author"><br>
+  Section:
+   <select name="bSection">
+    <%for(var i=0;i<sections.length;i++) {%>
+  <option value="<%=sections[i].name %>"><%=sections[i].name %></option>
+ <%}%>
+</select> <br><br>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+    </div>
+
+    <div class="col-sm-8">
+
+      
+      <center>
+      <h3>List of Books</h3>
+    
+      <table border=1>
+    <tr>
+      
+      <td><h4>Name</h4></td>
+      <td><h4>Author</h4></td>
+      <td><h4>Section</h4></td>
+      <td><h4>Action</h4></td>
+
+        </tr>
+        <% for(var i=0;i<bookList.length;i++){%>
+        <tr>
+          <td>
+           <!--    <a href="/books/view?id=<%=bookList[i].id %>"><%=bookList[i].name %></a>-->
+           <a href="/book/<%=bookList[i].id %>"><%=bookList[i].name %></a>
+            </td>
+            <td>
+               <%= bookList[i].author %>
+            </td>
+            <td>
+               <%=bookList[i].type %>
+            </td>
+            <td>
+              
+         
+               <input type="button" class="deleteBtn" bookid="<%=bookList[i].id%>" value="Delete">
+             </form>
+            </td>
+        </tr>
+
+       <% } %>
+  </table>
+  </center>
+    </div>
+    
+  </div>
+</div>
+
+</body>
+</html>

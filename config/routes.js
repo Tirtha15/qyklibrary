@@ -33,23 +33,40 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'myhome'
+    view: 'common/myhome'
   },
   //for books controller
-  'get /books/find':'BooksController.find',
-  'post /books/insert':'BooksController.insert',
-  'get /books/viewAll':'BooksController.viewAll',
-  'get /books/view':'BooksController.view',
-  'get /books/update':'BooksController.update',
-  'post /books/editdetls':'BooksController.editdetls',
-  'get /books/del':'BooksController.del',
-  '/books/insertBook':'BooksController.insertBook',
-  
-  //for section controller
-  '/section/insert':'SectionController.insert',
-  '/section/newinsert':'SectionController.newinsert',
-  'get /section/viewAll':'SectionController.viewAll',
 
+ 'get /books/find':'BooksController.find',//in use  
+
+ 'get /book/:id':'BooksController.findOne',//in use
+
+ 'put /books/:id':'BooksController.update',//in use
+ 'delete /books/del/:id':'BooksController.delete',//in use 
+ 'post /books/insert':'BooksController.create',//in use
+  
+ 'post /section/newinsert':'SectionController.create',//in use
+ 'get /section/find':'SectionController.find',// in use
+
+ 'get /admin/login':'AdminController.login',// in use
+
+
+  // 'get /books/find':'BooksController.find',
+
+  // 'get /books/view':'BooksController.view',
+  // 'get /books/update':'BooksController.update',
+  // 'post /books/editdetls':'BooksController.editdetls',
+
+  // '/books/insertBook':'BooksController.insertBook',
+ 
+  //for section controller
+  //'post /section/insert':'SectionController.insert',
+  
+  
+
+  //for admin controller
+ 
+  
 
   /***************************************************************************
   *                                                                          *
