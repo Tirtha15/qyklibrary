@@ -1,0 +1,9 @@
+  <%= function display(section,book){
+      if(section==book.type)
+       return "<li>"+book.name+"</li>";
+      } for(var i=0;i<books.length;i++){%>
+
+     <%- display("Fiction",books[i]) %>
+
+
+      <%} %>

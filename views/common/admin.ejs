@@ -15,7 +15,7 @@ $(document).ready(function(){
      // alert(bookid);
              $.ajax({
             method: "DELETE",
-            url: "/books/del/"+bookid,
+            url: "/books/"+bookid,
             
             })
             .done(function( msg ) {
@@ -39,8 +39,8 @@ $(document).ready(function(){
     <div>
       <ul class="nav navbar-nav">
         <li><a href="/">Home</a></li>
-        <li><a href="/books/find">Books</a></li>
-        <li><a href="/section/find">Sections</a></li>
+        <li><a href="/books">Books</a></li>
+        <li><a href="/sections">Sections</a></li>
         <li class="active"><a href="#">Admin Panel</a></li>
         
       </ul>
@@ -53,7 +53,7 @@ $(document).ready(function(){
   <div class="row">
     <div class="col-sm-4">
       <h3>Add New Section</h3>
-      <form action="/section/newinsert" method=POST>
+      <form action="/sections" method=POST>
 Section Name:<input type="text" name="secName" placeholder="Type a new section name"><br>
 <!--<div class="form-group">
     <label for="sname">Section Name:</label>
@@ -63,7 +63,7 @@ Section Name:<input type="text" name="secName" placeholder="Type a new section n
 <button type="submit" class="btn btn-default">Submit</button>
 </form><br>
 <h3>Add New Books</h3>
-<form action="/books/insert" method=POST>
+<form action="/books" method=POST>
   Book Name: <input type="text" placeholder="Enter book name" name="book"><br>
   Author Name: <input type="text" placeholder="Enter author name" name="author"><br>
   Section:
@@ -96,7 +96,7 @@ Section Name:<input type="text" name="secName" placeholder="Type a new section n
         <tr>
           <td>
            <!--    <a href="/books/view?id=<%=bookList[i].id %>"><%=bookList[i].name %></a>-->
-           <a href="/book/<%=bookList[i].id %>"><%=bookList[i].name %></a>
+           <a href="/books/<%=bookList[i].id %>"><%=bookList[i].name %></a>
             </td>
             <td>
                <%= bookList[i].author %>

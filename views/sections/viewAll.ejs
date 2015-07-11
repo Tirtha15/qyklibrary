@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
-<body>
-  <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">Qyk Library</a>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/books/find">Books</a></li>
-        <li class="active"><a href="/section/find">Sections</a></li>
-        <li><a href="/admin/login">Admin Login</a></li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Section Name</th>
-      </tr>
-    </thead>
-    <tbody>
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $(".selectSec").click(function(){
+          mySection = $(this).attr("find");
+          alert(mySection);
+          location.reload();
+        });
+    });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Qyk Library</a>
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/books">Books</a></li>
+            <li class="active"><a href="/sections">Sections</a></li>
+            <li><a href="/admin/login">Admin Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Section Name</th>
+        </tr>
+      </thead>
+      <tbody>
         <% for(var i=0;i<inserted.length;i++){%>
-<tr>
-<td> <%=inserted[i].name%></td>
-</tr>
-
-<%}%>
-    </tbody>
-  </table>
-
-</body>
+        <tr>
+          <td class="selectSec" find="<%=inserted[i].name%>"> <%=inserted[i].name%></td>
+        </tr>
+        <%}%>
+      </tbody>
+    </table>
+    <hr>
+    <ul>
+      <% 
+      function display(section,book){
+        if(section==book.type)
+        return "<li>"+book.name+"</li>";
+      }
+      for(var i=0;i<books.length;i++){ %>
+        <%- display("Non-Fiction",books[i]) %>
+      <%} %>
+    </ul>
+  </body>
 </html>

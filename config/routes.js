@@ -37,16 +37,16 @@ module.exports.routes = {
   },
   //for books controller
 
- 'get /books/find':'BooksController.find',//in use  
+ 'get /books':'BooksController.find',//in use  
 
- 'get /book/:id':'BooksController.findOne',//in use
+ 'get /books/:id':'BooksController.findOne',//in use
 
  'put /books/:id':'BooksController.update',//in use
- 'delete /books/del/:id':'BooksController.delete',//in use 
- 'post /books/insert':'BooksController.create',//in use
-  
- 'post /section/newinsert':'SectionController.create',//in use
- 'get /section/find':'SectionController.find',// in use
+ 'delete /books/:id':'BooksController.delete',//in use 
+ 'post /books':'BooksController.create',//in use
+
+ 'post /sections':'SectionController.create',//in use
+ 'get /sections':'SectionController.find',// in use
 
  'get /admin/login':'AdminController.login',// in use
 

@@ -33,8 +33,22 @@ module.exports = {
          return response.serverError();
        }
        else{
-         //sails.log(books);
-         response.view("sections/viewAll",{name: "Showing All Results", inserted: sections });
+        //sails.log(books);
+       Books.find(function(error, books) {
+      if (error) {
+        return response.serverError(error);
+      } else {
+        // sails.log(books);
+        response.view("sections/viewAll", {
+          books: books,
+          inserted: sections,
+          mySection: "Detective"
+        });
+      }
+    });
+
+
+         //response.view("sections/viewAll",{name: "Showing All Results", inserted: sections });
        }
 
       });
