@@ -27,13 +27,13 @@ module.exports = {
   },
 // in use
    find:function(request,response){//method to see all sections
-
-     if(request.query.showBooks!=undefined)
-       var sect=request.query.showBooks;
+sails.log("Reaching find");
+     if(request.params.showBooks!=undefined)
+       var sect=request.params.showBooks;
      else
       var sect="";
 
-    sails.log(sect);
+    sails.log("section:"+sect);
 
       Section.find(function(error,sections){
        if(error)
@@ -63,7 +63,29 @@ module.exports = {
         
   },
 
-  
+  // in use
+     findSectionBooks:function(request,response){//method to see all sections
+sails.log("Reaching this find");
+     if(request.params.showBooks!=undefined)
+       var sect=request.params.showBooks;
+     else
+      var sect="";
+
+    sails.log("section:"+sect);
+
+      Books.find({
+      type: sect
+    }).exec(function(error, books) {
+      if (error) {
+        return response.serverError(error);
+      } else {
+        sails.log(books);
+        return response.send(books);
+        //response.view("books/viewOne",{sbook: bookv })
+      }
+    });       
+  },
+
  /*
  	insert1:function(request,response){//method to get the details of each section
       response.ok("Inserted");

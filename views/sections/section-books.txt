@@ -3,4 +3,7 @@
 	2. Pass a GET param, say "/sections?showBooks=:section_id"
 	3. Read "showBooks" param in controller and show books of that section
 2. Make AJAX call to get books for a section
- class="selectSec" find="<%=inserted[i].name%>"
+	1. Read jQuery basics 
+	2. Create an API to return books for a section "GET /section/:id/books" (JSON / HTML)
+	3. Call above API (using jQuery) on click on a section
+	4. Update HTML with API response using jQuery
