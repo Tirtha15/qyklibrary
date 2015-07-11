@@ -64,7 +64,8 @@
         <% for(var i=0;i<inserted.length;i++){%>
         <tr>
         <!--  <td> <a href="/sections?showBooks=<%=inserted[i].name%>"><%=inserted[i].name %></a></td>-->
-        <td><input type="button" class="selectSec" find="<%=inserted[i].name %>" value="<%=inserted[i].name %>"></td>
+        <!--<td><input type="button" class="selectSec" find="<%=inserted[i].name %>" value="<%=inserted[i].name %>"></td>-->
+        <td  class="selectSec" find="<%=inserted[i].name %>"><%=inserted[i].name %></td>
         </tr>
         <%}%>
       </tbody>
