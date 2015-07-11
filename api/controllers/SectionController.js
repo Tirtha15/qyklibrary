@@ -27,6 +27,14 @@ module.exports = {
   },
 // in use
    find:function(request,response){//method to see all sections
+
+     if(request.query.showBooks!=undefined)
+       var sect=request.query.showBooks;
+     else
+      var sect="";
+
+    sails.log(sect);
+
       Section.find(function(error,sections){
        if(error)
        {
@@ -42,7 +50,7 @@ module.exports = {
         response.view("sections/viewAll", {
           books: books,
           inserted: sections,
-          mySection: "Detective"
+          mySection: sect
         });
       }
     });

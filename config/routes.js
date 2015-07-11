@@ -47,6 +47,9 @@ module.exports.routes = {
 
  'post /sections':'SectionController.create',//in use
  'get /sections':'SectionController.find',// in use
+ //'get /sections/:secName':'SectionController.find',//in use
+'get /sections':'SectionController.find',//in use
+
 
  'get /admin/login':'AdminController.login',// in use
 

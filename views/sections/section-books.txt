@@ -1,0 +1,6 @@
+1. Load page on click on a section
+	1. Make section as <a> tag
+	2. Pass a GET param, say "/sections?showBooks=:section_id"
+	3. Read "showBooks" param in controller and show books of that section
+2. Make AJAX call to get books for a section
+ class="selectSec" find="<%=inserted[i].name%>"
